@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Todo liste avec VueJS</title>
+
+    <script src="lib/vue.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="https://unpkg.com/vuejs-paginate@latest"></script>
+<!-- or use the specify version -->
+<script src="https://unpkg.com/vuejs-paginate@0.9.0"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div id="app">
+        <br>
+
+        <input type="text" v-model="name" placeholder="Name...">
+        <input type="text" v-model="cuisine" placeholder="Cuisine...">
+        <button v-on:click="addTodo"  class="button">Ajouter</button>
+        <button v-on:click="update"  class="button2">Modifier</button>
+        <button v-on:click="search"  class="button4">Rechercher</button>
+  
+        <table>
+            <thead>
+				<tr>
+			        <th>Name</th>
+                    <th>Cuisine</th>
+                    <th>Modifier</th>
+                    <th>Supprimer</th>
+				</tr>
+            </thead>
+            <tr v-for="(r, index) in Restau">
+                <td><p>{{r.name}}</p>  </td>
+                <td> <p>{{r.cuisine}}</p></td>
+                <td><button v-on:click="update1(r)"  class="button2" >Modifier</button></td>
+                <td><button v-on:click="remove(r)"  class="button3">Supprimer</button></td>
+			</tr>
+        </table>
+        <button v-on:click="pageBack"><<</button>   <button v-on:click="pageNext">>></button>
+       
+    </div>
+</body>
+
+</html>
